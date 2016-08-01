@@ -1,5 +1,5 @@
 #
-# Copyright 2015 The Android Open Source Project
+# Copyright 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,3 +21,8 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 
 TARGET_KERNEL_ARCH := $(TARGET_ARCH)
+
+# Set up the local kernel.
+TARGET_KERNEL_SRC := hardware/bsp/kernel/bcm/linux
+TARGET_KERNEL_DEFCONFIG := bcm2835_defconfig
+#$(call add_kernel_configs, $(realpath $(LOCAL_PATH)/soc.kconf))

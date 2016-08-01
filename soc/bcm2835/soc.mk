@@ -24,5 +24,5 @@ TARGET_KERNEL_ARCH := $(TARGET_ARCH)
 
 # Set up the local kernel.
 TARGET_KERNEL_SRC := hardware/bsp/kernel/bcm/linux
-TARGET_KERNEL_DEFCONFIG := bcm2835_defconfig
+TARGET_KERNEL_DEFCONFIG := bcmrpi_defconfig
 #$(call add_kernel_configs, $(realpath $(LOCAL_PATH)/soc.kconf))

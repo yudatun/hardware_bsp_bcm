@@ -19,10 +19,12 @@ TARGET_ARCH_VARIANT := armv7-a
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-
 TARGET_KERNEL_ARCH := $(TARGET_ARCH)
+
+TARGET_USE_DISKINSTALLER := true
+TARGET_PARTITION_TABLE_TYPE := MBR
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Set up the local kernel.
 TARGET_KERNEL_SRC := hardware/bsp/kernel/bcm/linux
 TARGET_KERNEL_DEFCONFIG := bcmrpi_defconfig
-#$(call add_kernel_configs, $(realpath $(LOCAL_PATH)/soc.kconf))

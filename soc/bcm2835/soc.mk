@@ -21,6 +21,9 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_KERNEL_ARCH := $(TARGET_ARCH)
 
+TARGET_NO_BOOTLOADER := false
+TARGET_NO_KERNEL := false
+
 TARGET_USE_DISKINSTALLER := true
 TARGET_PARTITION_TABLE_TYPE := MBR
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -28,3 +31,5 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Set up the local kernel.
 TARGET_KERNEL_SRC := hardware/bsp/kernel/bcm/linux
 TARGET_KERNEL_DEFCONFIG := bcmrpi_defconfig
+
+TARGET_BOOT_OUT := out/target/product/$(TARGET_DEVICE)/boot

@@ -32,5 +32,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Set up the local kernel.
 TARGET_KERNEL_SRC := hardware/bsp/kernel/bcm/linux
 TARGET_KERNEL_DEFCONFIG := bcmrpi_defconfig
+TARGET_KERNEL_DTB :=  bcm2708-rpi-b.dtb
 
 TARGET_BOOT_OUT := out/target/product/$(TARGET_DEVICE)/boot

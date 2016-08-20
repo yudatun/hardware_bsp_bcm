@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+LOCAL_PATH := hardware/bsp/bcm/soc/bcm2837
+
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a
 TARGET_CPU_VARIANT := generic
@@ -35,3 +37,8 @@ TARGET_KERNEL_DEFCONFIG := bcm2709_defconfig
 TARGET_KERNEL_DTB := bcm2710-rpi-3-b.dtb
 
 TARGET_BOOT_OUT := out/target/product/$(TARGET_DEVICE)/boot
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.bcm.rc:root/init.bcm.rc \
+    system/core/rootdir/init.usb.rc:root/init.usb.rc \
+    system/core/rootdir/ueventd.rc:root/ueventd.rc

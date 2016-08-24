@@ -19,7 +19,6 @@ on init
     # in the generated path, so that the names pulled out of the GPT
     # can be associated with the correct disk. Create a shortcut to
     # /dev/block/by-name so that we can use the same fstabs everywhere.
-#    chown system root /dev/watchdog
 
 on fs
     mount_all /fstab.${ro.hardware}
@@ -28,13 +27,6 @@ on fs
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
     write /sys/class/android_usb/android0/f_ffs/aliases adb
     write /sys/class/android_usb/android0/iSerial ${ro.hardware}${ro.serialno}
-
-#service watchdogd /sbin/watchdogd
-#    user system
-#    group root
-#    class core
-#    critical
-#    seclabel u:r:watchdogd:s0
 
 on boot
     start initnetwork

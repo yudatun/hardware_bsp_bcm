@@ -46,3 +46,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/initnetwork.sh:system/bin/initnetwork.sh
+
+# TODO: Move common/prebuilts/sepolicy include to audio_prebuilts.mk
+BOARD_SEPOLICY_DIRS += \
+	$(LOCAL_PATH)/sepolicy

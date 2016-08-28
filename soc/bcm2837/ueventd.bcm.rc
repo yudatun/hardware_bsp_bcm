@@ -1,1 +1,3 @@
 # Device needed by shared transport layer
+/dev/mmcblk0*    0666   root root
+/dev/ttyAMA0     0666   root root

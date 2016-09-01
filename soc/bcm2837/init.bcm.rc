@@ -21,7 +21,6 @@ on init
     # /dev/block/by-name so that we can use the same fstabs everywhere.
 
 on fs
-    mkdir /boot 0775 root root
     mount_all /fstab.${ro.hardware}
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell

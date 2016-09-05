@@ -37,17 +37,6 @@ TARGET_KERNEL_DEFCONFIG := bcm2709_defconfig
 $(call add_kernel_configs, $(realpath $(LOCAL_PATH)/soc.kconf))
 TARGET_KERNEL_DTB := bcm2710-rpi-3-b.dtb
 
-TARGET_BOOT_OUT := out/target/product/$(TARGET_DEVICE)/boot
+########################################
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.bcm.rc:root/init.bcm.rc \
-    $(LOCAL_PATH)/ueventd.bcm.rc:root/ueventd.bcm.rc \
-    system/core/rootdir/init.usb.configfs.rc:root/init.usb.configfs.rc \
-    system/core/rootdir/ueventd.rc:root/ueventd.rc
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/initnetwork.sh:system/bin/initnetwork.sh
-
-# TODO: Move common/prebuilts/sepolicy include to audio_prebuilts.mk
-BOARD_SEPOLICY_DIRS += \
-	$(LOCAL_PATH)/sepolicy
+include $(LOCAL_PATH)/../common/soc.mk

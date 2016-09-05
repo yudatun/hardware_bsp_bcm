@@ -1,5 +1,5 @@
 #
-# Copyright 2015 The Android Open Source Project
+# Copyright 2016 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,13 +14,18 @@
 # limitations under the License.
 #
 
-CONFIG_USB_SERIAL=y
-CONFIG_USB_GADGET=y
-CONFIG_USB_GADGET_DEBUG_FILES=y
-CONFIG_USB_GADGET_DEBUG_FS=y
-CONFIG_USB_F_ACM=y
-CONFIG_USB_F_SERIAL=y
-CONFIG_USB_LIBCOMPOSITE=y
-CONFIG_USB_U_SERIAL=y
-CONFIG_USB_CONFIGFS=y
-CONFIG_USB_CONFIGFS_F_FS=y
+LOCAL_PATH := hardware/bsp/bcm/soc/common
+
+TARGET_BOOT_OUT := out/target/product/$(TARGET_DEVICE)/boot
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.bcm.rc:root/init.bcm.rc \
+    $(LOCAL_PATH)/ueventd.bcm.rc:root/ueventd.bcm.rc \
+    system/core/rootdir/init.usb.configfs.rc:root/init.usb.configfs.rc \
+    system/core/rootdir/ueventd.rc:root/ueventd.rc
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/id_rsa.pub:data/ssh/authorized_keys
+
+BOARD_SEPOLICY_DIRS += \
+    $(LOCAL_PATH)/sepolicy

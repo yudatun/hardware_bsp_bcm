@@ -23,9 +23,9 @@ on init
 on fs
     mount_all /fstab.${ro.hardware}
 
-    #mkdir /dev/usb-ffs 0770 shell shell
-    #mkdir /dev/usb-ffs/adb 0770 shell shell
-    #mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
+    mkdir /dev/usb-ffs 0770 shell shell
+    mkdir /dev/usb-ffs/adb 0770 shell shell
+    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
 
     mkdir /data/ssh 0644 root root
     mkdir /data/ssh/empty 0644 root root

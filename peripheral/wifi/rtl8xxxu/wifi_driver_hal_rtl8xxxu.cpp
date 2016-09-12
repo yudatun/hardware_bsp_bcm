@@ -17,16 +17,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <sys/syscall.h>
 
 #include <cutils/log.h>
 #include <hardware_brillo/wifi_driver_hal.h>
 
+static const char *s_rtl8xxxu_modules[] = {
+    "/system/lib/modules/rfkill.ko",
+    "/system/lib/modules/cfg80211.ko",
+    "/system/lib/modules/mac80211.ko",
+    "/system/lib/modules/rtl8xxxu.ko",
+    NULL,
+};
+
+static int insmod(const char *filename, const char *options, int flags)
+{
+    int fd = open(filename, O_RDONLY | O_NOFOLLOW);
+    if (fd == -1) {
+        ALOGE("insmod: open '%s' error: %s\n", filename, strerror(errno));
+        return -1;
+    }
+    int rc = syscall(__NR_finit_module, fd, options, flags);
+    if (rc == -1) {
+        ALOGE("finit_module for '%s' error: %s", filename, strerror(errno));
+    }
+    close(fd);
+    return rc;
+}
+
 static wifi_driver_error wifi_driver_initialize_rtl8xxxu(void)
 {
-    return WIFI_SUCCESS;
+    int i = 0;
+    int rc;
+
+    for (i = 0; s_rtl8xxxu_modules[i] != NULL; ++i) {
+        rc = insmod(s_rtl8xxxu_modules[i], NULL, 0);
+    }
+
+    return rc == 0 ? WIFI_SUCCESS : WIFI_ERROR_UNKNOWN;
 }
 
 static wifi_driver_error wifi_driver_set_mode_rtl8xxxu(

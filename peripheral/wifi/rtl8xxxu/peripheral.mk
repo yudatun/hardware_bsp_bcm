@@ -16,7 +16,7 @@
 
 WLAN_BSP_SRC = hardware/bsp/bcm/peripheral/wifi/rtl8xxxu
 
-WIFI_DRIVER_HAL_MODULE := wifi_driver.$(soc_name)
 WIFI_DRIVER_HAL_PERIPHERAL := rtl8xxxu
+WIFI_DRIVER_HAL_MODULE := wifi_driver.$(soc_name)
 
 BOARD_SEPOLICY_DIRS += $(WLAN_BSP_SRC)/sepolicy

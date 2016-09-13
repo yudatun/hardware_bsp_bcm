@@ -36,7 +36,7 @@ static const char *s_rtl8xxxu_modules[] = {
 
 static int insmod(const char *filename, const char *options, int flags)
 {
-    int fd = open(filename, O_RDONLY | O_NOFOLLOW);
+    int fd = open(filename, O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
     if (fd == -1) {
         ALOGE("insmod: open '%s' error: %s\n", filename, strerror(errno));
         return -1;
@@ -55,7 +55,7 @@ static wifi_driver_error wifi_driver_initialize_rtl8xxxu(void)
     int rc;
 
     for (i = 0; s_rtl8xxxu_modules[i] != NULL; ++i) {
-        rc = insmod(s_rtl8xxxu_modules[i], NULL, 0);
+        rc = insmod(s_rtl8xxxu_modules[i], "", 0);
     }
 
     return rc == 0 ? WIFI_SUCCESS : WIFI_ERROR_UNKNOWN;

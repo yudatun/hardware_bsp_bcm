@@ -1,0 +1,2 @@
+/system/bin/start-ssh    u:object_r:shell_exec:s0
+/system/bin/sshd         u:object_r:shell_exec:s0

@@ -1,2 +1,1 @@
-/system/bin/start-ssh    u:object_r:shell_exec:s0
-/system/bin/sshd         u:object_r:shell_exec:s0
+/system/bin/initnetwork.sh  u:object_r:brillo_setup_exec:s0

@@ -26,7 +26,7 @@ PRODUCT_COPY_FILES += \
     system/core/rootdir/ueventd.rc:root/ueventd.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/id_rsa.pub:data/ssh/authorized_keys
+    $(LOCAL_PATH)/initnetwork.sh:system/bin/initnetwork.sh
 
 BOARD_SEPOLICY_DIRS += \
     $(LOCAL_PATH)/sepolicy

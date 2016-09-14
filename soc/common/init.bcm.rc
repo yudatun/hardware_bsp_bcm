@@ -22,3 +22,11 @@ on init
 
 on fs
     mount_all /fstab.${ro.hardware}
+
+on boot
+    start initnetwork
+
+service initnetwork /system/bin/initnetwork.sh
+    user root
+    group root
+    oneshot

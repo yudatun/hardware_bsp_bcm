@@ -28,11 +28,39 @@
 
 const char kStationDeviceName[] = "wlan0";
 
-/* Our HAL needs to set the AP/Station mode prior to actually initializing
- * the wifi. We use a dummy function for the initialize.
- */
-static wifi_driver_error wifi_driver_initialize_bcm43438(void) {
-    return WIFI_SUCCESS;
+static const char *s_wifi_modules[] = {
+    "/system/lib/modules/rfkill.ko",
+    "/system/lib/modules/cfg80211.ko",
+    "/system/lib/modules/brcmutil.ko",
+    "/system/lib/modules/brcmfmac.ko",
+    NULL,
+};
+
+static int insmod(const char *filename, const char *options, int flags)
+{
+    int fd = open(filename, O_RDONLY | O_NOFOLLOW | O_CLOEXEC);
+    if (fd == -1) {
+        ALOGE("insmod: open '%s' error: %s\n", filename, strerror(errno));
+        return -1;
+    }
+    int rc = syscall(__NR_finit_module, fd, options, flags);
+    if (rc == -1) {
+        ALOGE("finit_module for '%s' error: %s", filename, strerror(errno));
+    }
+    close(fd);
+    return rc;
+}
+
+static wifi_driver_error wifi_driver_initialize_bcm43438(void)
+{
+    int i = 0;
+    int rc;
+
+    for (i = 0; s_wifi_modules[i] != NULL; ++i) {
+        rc = insmod(s_wifi_modules[i], "", 0);
+    }
+
+    return rc == 0 ? WIFI_SUCCESS : WIFI_ERROR_UNKNOWN;
 }
 
 static wifi_driver_error wifi_driver_set_mode_bcm43438(

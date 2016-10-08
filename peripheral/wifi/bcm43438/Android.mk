@@ -23,7 +23,7 @@ include $(CLEAR_VARS)
 
 LOCAL_CFLAGS += -Wno-unused-parameter
 LOCAL_C_INCLUDES += device/generic/brillo/wifi_driver_hal/include
-LOCAL_SHARED_LIBRARIES := libcutils
+LOCAL_SHARED_LIBRARIES := libcutils liblog
 LOCAL_CPPFLAGS += -DLOG_TAG=\"hal_bcm43438\"
 LOCAL_SRC_FILES := wifi_driver_hal_bcm43438.cpp
 LOCAL_MODULE := $(WIFI_DRIVER_HAL_MODULE)

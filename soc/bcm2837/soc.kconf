@@ -15,3 +15,5 @@
 #
 
 CONFIG_SUSPEND=y
+
+# CONFIG_OABI_COMPAT is not set

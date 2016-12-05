@@ -40,4 +40,19 @@ LOCAL_SRC_FILES := $(LOCAL_MODULE)
 
 include $(BUILD_PREBUILT)
 
+########################################
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := bt_bcm
+LOCAL_MODULE_TAGS := optional
+LOCAL_REQUIRED_MODULES :=  \
+    libbt-vendor \
+    bluetooth.default \
+    bluetooth-cli \
+    bluetoothtbd \
+    net_bdtool
+LOCAL_INIT_RC := bt_bcm43438.rc
+
+include $(BUILD_PHONY_PACKAGE)
+
 endif

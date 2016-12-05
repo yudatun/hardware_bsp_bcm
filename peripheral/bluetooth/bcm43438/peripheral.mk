@@ -23,3 +23,9 @@ BOARD_SEPOLICY_DIRS += $(BLUETOOTH_BSP_SRC)/sepolicy
 # Enable bluetooth
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(BLUETOOTH_BSP_SRC)
+
+########################################
+DEVICE_PACKAGES += \
+    bt_bcm \
+    bt_vendor.conf \
+    BCM43430A1.hcd \

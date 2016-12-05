@@ -15,16 +15,3 @@ on post-fs-data
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-
-########################################################
-
-service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
-    class main
-    group bluetooth wifi system dhcp
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    group bluetooth system dhcp
-    disabled
-    oneshot

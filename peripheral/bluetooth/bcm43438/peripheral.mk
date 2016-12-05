@@ -23,6 +23,7 @@ BOARD_SEPOLICY_DIRS += $(BLUETOOTH_BSP_SRC)/sepolicy
 # Enable bluetooth
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(BLUETOOTH_BSP_SRC)
+BOARD_CUSTOM_BT_CONFIG := $(BLUETOOTH_BSP_SRC)/vnd_raspberrypi3.txt
 
 ########################################
 DEVICE_PACKAGES += \

@@ -1,0 +1,5 @@
+# initnetwork.sh
+/system/bin/initnetwork.sh  u:object_r:brillo_setup_exec:s0
+
+# Bluetooth UART device port
+/dev/ttyAMA0        u:object_r:bluetoothtbd_device:s0

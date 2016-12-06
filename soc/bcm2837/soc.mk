@@ -38,5 +38,17 @@ $(call add_kernel_configs, $(realpath $(LOCAL_PATH)/soc.kconf))
 TARGET_KERNEL_DTB := bcm2710-rpi-3-b.dtb
 
 ########################################
+BOARD_SEPOLICY_DIRS += \
+    $(LOCAL_PATH)/sepolicy
+
+########################################
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.bcm.rc:root/init.bcm.rc \
+    $(LOCAL_PATH)/ueventd.bcm.rc:root/ueventd.bcm.rc
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/initnetwork.sh:system/bin/initnetwork.sh
+
+########################################
 
 include $(LOCAL_PATH)/../common/soc.mk

@@ -19,14 +19,9 @@ LOCAL_PATH := hardware/bsp/bcm/soc/common
 TARGET_BOOT_OUT := out/target/product/$(TARGET_DEVICE)/boot
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init.bcm.rc:root/init.bcm.rc \
-    $(LOCAL_PATH)/ueventd.bcm.rc:root/ueventd.bcm.rc \
     system/core/rootdir/init.usb.rc:root/init.usb.rc \
     system/core/rootdir/init.usb.configfs.rc:root/init.usb.configfs.rc \
     system/core/rootdir/ueventd.rc:root/ueventd.rc
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/initnetwork.sh:system/bin/initnetwork.sh
 
 BOARD_SEPOLICY_DIRS += \
     $(LOCAL_PATH)/sepolicy

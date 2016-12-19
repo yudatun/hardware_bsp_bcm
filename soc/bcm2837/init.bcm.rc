@@ -24,6 +24,8 @@ on fs
     mount_all /fstab.${ro.hardware}
 
 on boot
+    hostname "Yudatun.local"
+
     start initnetwork
 
 service initnetwork /system/bin/initnetwork.sh
